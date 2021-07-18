@@ -107,7 +107,7 @@ void olaf_print_fp_include_off_by_one_matches(struct fingerprint fp){
 
 	uint32_t hash = olaf_fp_extractor_hash(fp);
 
-	printf("%u,%d,%d,%d,%d\n",hash,timeIndex1,frequencyBin1,timeIndex2,frequencyBin2);
+	printf("%u,%d,%d,%d,%d,0\n",hash,timeIndex1,frequencyBin1,timeIndex2,frequencyBin2);
 
 	int originalt1 = fp.timeIndex1;
 	int originalt2 = fp.timeIndex2;
@@ -115,11 +115,11 @@ void olaf_print_fp_include_off_by_one_matches(struct fingerprint fp){
 	//to overcome time bin off by one misses
 	fp.timeIndex2 = originalt2 + 1;
 	hash = olaf_fp_extractor_hash(fp);
-	printf("%u,%d,%d,%d,%d\n",hash,fp.timeIndex1,frequencyBin1,fp.timeIndex2,frequencyBin2);
+	printf("%u,%d,%d,%d,%d,1\n",hash,fp.timeIndex1,frequencyBin1,fp.timeIndex2,frequencyBin2);
 
 	fp.timeIndex2 = originalt2 - 1;
 	hash = olaf_fp_extractor_hash(fp);
-	printf("%u,%d,%d,%d,%d\n",hash,fp.timeIndex1,frequencyBin1,fp.timeIndex2,frequencyBin2);
+	printf("%u,%d,%d,%d,%d,1\n",hash,fp.timeIndex1,frequencyBin1,fp.timeIndex2,frequencyBin2);
 
 	fp.timeIndex1 = originalt1;
 	fp.timeIndex2 = originalt2;
